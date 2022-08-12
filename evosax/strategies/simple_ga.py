@@ -26,8 +26,8 @@ class EvoParams:
     sigma_limit: float = 0.01
     init_min: float = 0.0
     init_max: float = 0.0
-    clip_min: float = -jnp.finfo(jnp.float32).max
-    clip_max: float = jnp.finfo(jnp.float32).max
+    clip_min: int = 1
+    clip_max: int = 26
 
 
 class SimpleGA(Strategy):
