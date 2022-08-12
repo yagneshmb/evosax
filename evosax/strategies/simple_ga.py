@@ -91,6 +91,7 @@ class SimpleGA(Strategy):
             rng_mate, members_a, members_b, params.cross_over_rate
         )
         x += epsilon
+        print(x)
         return jnp.squeeze(x), state
 
     def tell_strategy(
