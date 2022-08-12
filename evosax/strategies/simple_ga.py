@@ -92,7 +92,7 @@ class SimpleGA(Strategy):
         )
         x += epsilon
         print("hi", x)
-        #return x, state
+        return x, state
 
     def tell_strategy(
         self,
