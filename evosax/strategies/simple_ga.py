@@ -4,6 +4,7 @@ import chex
 from typing import Tuple
 from ..strategy import Strategy
 from flax import struct
+import numpy as np
 
 
 @struct.dataclass
@@ -78,7 +79,7 @@ class SimpleGA(Strategy):
         rng, rng_eps, rng_idx_a, rng_idx_b = jax.random.split(rng, 4)
         rng_mate = jax.random.split(rng, self.popsize)
         epsilon = (
-            jax.random.normal(rng_eps, (self.popsize, self.num_dims))
+            jax.random.normal(rng_eps, (self.popsize, self.num_dims), dtype=np.int8)
             * state.sigma
         )
         elite_ids = jnp.arange(self.elite_popsize)
