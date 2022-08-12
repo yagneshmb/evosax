@@ -79,9 +79,10 @@ class SimpleGA(Strategy):
         rng, rng_eps, rng_idx_a, rng_idx_b = jax.random.split(rng, 4)
         rng_mate = jax.random.split(rng, self.popsize)
         epsilon = (
-            jax.random.normal(rng_eps, (self.popsize, self.num_dims), dtype=np.int8)
+            jax.random.randint(rng_eps, minval=1, maxval=26, shape=(self.popsize, self.num_dims))
             * state.sigma
         )
+        
         elite_ids = jnp.arange(self.elite_popsize)
         idx_a = jax.random.choice(rng_idx_a, elite_ids, (self.popsize,))
         idx_b = jax.random.choice(rng_idx_b, elite_ids, (self.popsize,))
